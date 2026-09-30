@@ -1,76 +1,100 @@
 # Autonomous Data Analyst
 
-Autonomous Data Analyst is a Streamlit application for exploring, cleaning, analyzing, and visualizing tabular datasets. Upload a file, inspect its structure and data quality, apply cleaning operations, and export the cleaned data or an HTML analysis report.
+A Streamlit-powered tool that makes data exploration, cleaning, analysis, and visualization effortless. Upload your dataset, dive into its structure and quality, apply cleaning operations, and generate insights—all in one interactive app.
 
-## Features
+## What You Can Do
 
-- Load CSV, TSV, Excel (`.xlsx` and `.xls`), and JSON files.
-- Preview records, column names, data types, missing values, unique values, and duplicates.
-- Profile dataset size, memory use, data types, descriptive statistics, and numeric correlations.
-- Clean data by removing duplicates, empty rows or columns, filling missing values, standardizing column names, trimming strings, and filtering numeric outliers using the IQR rule.
-- Calculate descriptive statistics and rule-based dataset insights.
-- Build interactive Plotly charts, including histograms, bar and line charts, scatter plots, box and violin plots, pie and area charts, heatmaps, bubble charts, density heatmaps, sunbursts, and treemaps.
-- Generate and download HTML reports, and export cleaned data as CSV, Excel, TSV, or JSON.
+**Load your data:**
+- Import CSV, TSV, Excel (`.xlsx` and `.xls`), and JSON files
 
-## Requirements
+**Explore what you have:**
+- Preview your data records and examine column names and types
+- Check for missing values, duplicates, and unique values
+- Understand dataset size, memory usage, and get descriptive statistics
+- Explore numeric correlations between columns
 
-- Python installed and available as `python` (or use `py` on Windows).
-- Packages listed in [`requirements.txt`](requirements.txt).
+**Clean it up:**
+- Remove duplicate rows and empty rows or columns
+- Fill missing values intelligently
+- Standardize column names and trim strings
+- Filter out numeric outliers using the IQR method
+- Use automatic cleaning for quick preprocessing (but always review the results!)
 
-## Setup and Run
+**Visualize and analyze:**
+- Generate interactive Plotly charts: histograms, bar and line charts, scatter plots, box and violin plots, pie and area charts, heatmaps, bubble charts, density heatmaps, sunbursts, and treemaps
+- Explore descriptive statistics and rule-based insights
+- Export your findings as downloadable HTML reports
+- Save cleaned data in your preferred format: CSV, Excel, TSV, or JSON
 
-From the project directory, create and activate a virtual environment, install the dependencies, then launch Streamlit:
+## Getting Started
 
-```powershell
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
-streamlit run app.py
+**Prerequisites:**
+- Python (available as `python` on your system, or `py` on Windows)
+- Dependencies listed in [`requirements.txt`](requirements.txt)
+
+**Setup:**
+
+1. Create and activate a virtual environment:
+
+   **On Windows:**
+   ```powershell
+   python -m venv .venv
+   .venv\Scripts\Activate.ps1
+   ```
+
+   **On macOS or Linux:**
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   ```
+
+2. Install dependencies:
+   ```bash
+   python -m pip install -r requirements.txt
+   ```
+
+3. Launch the app:
+   ```bash
+   streamlit run app.py
+   ```
+
+Streamlit will print a local URL in your terminal. Open it in your browser to start using the app.
+
+## How to Use
+
+1. **Upload your dataset** using the sidebar—the app supports CSV, TSV, Excel, and JSON files
+2. **Explore** your data with the **Data Preview** and **Data Profile** sections
+3. **Clean** your data in **Data Cleaning**—any operations you apply affect your working dataset
+4. **Analyze and visualize** using **Statistics**, **Visualizations**, and **Insights**
+5. **Export** by creating an HTML report, or download your cleaned data and saved reports from **Download**
+
+**Note:** The automatic cleaning feature is convenient but always review the results before relying on them—automatic filling and outlier removal may not suit every dataset.
+
+## Project Structure
+
 ```
-
-On macOS or Linux, activate the environment with:
-
-```bash
-source .venv/bin/activate
-```
-
-Streamlit prints a local URL in the terminal when the app starts. Open that URL in a browser. Use **Upload Dataset** in the sidebar to select a supported file; the other analysis pages become available after upload.
-
-## Using the App
-
-1. Upload a CSV, TSV, Excel, or JSON dataset.
-2. Review the dataset in **Data Preview** and **Data Profile**.
-3. Use **Data Cleaning** to apply the operations you need. Cleaning actions affect the working dataset used by the analysis and exports.
-4. Explore **Statistics**, **Visualizations**, and **Insights**.
-5. Create an HTML report from **HTML Report**, or download cleaned data and saved reports from **Download**.
-
-The cleaning page also offers an automatic cleaning operation. Review the resulting data before treating the output as authoritative: automatic filling and outlier removal may not be appropriate for every dataset or analysis.
-
-## Generated Files
-
-- HTML reports are written to `reports/html/`.
-- Saved chart HTML files are written to `reports/charts/`.
-- The `data/raw/` and `data/cleaned/` folders are available for local dataset organization; files uploaded through the app are processed in the running session and are not automatically stored there.
-
-## Project Layout
-
-```text
 app.py                      Streamlit interface and page navigation
 style.css                   Application styles
 modules/                    Data loading, profiling, cleaning, analysis,
                             visualization, insights, and report generation
 utils/                      Configuration, validation, caching, and export helpers
-data/raw/                   Raw-data workspace
-data/cleaned/               Cleaned-data workspace
-reports/charts/             Saved interactive chart HTML
+data/raw/                   Local workspace for raw datasets
+data/cleaned/               Local workspace for cleaned datasets
+reports/charts/             Saved interactive chart HTML files
 reports/html/               Generated analysis reports
 tests/                      Automated tests
 requirements.txt            Python dependencies
 ```
 
-## Tests
+## Generated Files
 
-Run the test suite from the project directory with:
+- **HTML reports:** stored in `reports/html/`
+- **Chart files:** saved to `reports/charts/`
+- **Data folders:** Use `data/raw/` and `data/cleaned/` for local file organization; files uploaded through the app are processed in the session and aren't automatically stored here
+
+## Running Tests
+
+To run the automated test suite:
 
 ```bash
 python -m pytest
